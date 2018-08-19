@@ -1,24 +1,79 @@
 <body>
 
-<header>
+  <header>
 
-  <div class = "container-fluid header jumbotron">
-            <h4>{{title | uppercase}}</h4>
-  </div> 
-</header>
+    <div class="container-fluid header jumbotron">
+      <h4>{{title | uppercase}}</h4>
+    </div>
+  </header>
 
-<div class="container">
-  <div class="nav">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myTab" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-  <ul class="nav nav-tabs " id="myTab">
-    <li class="nav-item"><a class="nav-link" data-toggle="tab" [routerLink]="['/home']">Characters</a></li>
-    <li class="nav-item"><a class="nav-link" data-toggle="tab" [routerLink]="['/books']">Books</a></li>
-    <li class="nav-item"><a class="nav-link" data-toggle="tab" [routerLink]="['/houses']">Houses</a></li>
-    </ul>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="allCharacters && allBooks && allHouses">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".myTab" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2 myTab">
+
+        <ul class="nav nav-tabs " id="myTab">
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" [routerLink]="['/home']">Characters</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" [routerLink]="['/books']">Books</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" [routerLink]="['/houses']">Houses</a>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2 myTab">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Characters
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul *ngIf="allCharacters?.length > 0">
+                <li *ngFor="let character of allCharacters">
+                  <a [routerLink]="['/characterView',character.url]" class="dropdown-item">{{character.aliases}}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Books
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul *ngIf="allBooks?.length > 0">
+                <li *ngFor="let book of allBooks">
+                  <a [routerLink]="['/bookView',book.url]" class="dropdown-item">{{book.name}}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown" >
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              Houses
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <ul *ngIf="allHouses?.length > 0">
+                <li *ngFor="let house of allHouses">
+                  <a [routerLink]="['/houseView',house.url]" class="dropdown-item">{{house.name}}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
   </div>
-  </div>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </body>
