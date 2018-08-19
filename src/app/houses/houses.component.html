@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="jumbotron h3 text-center">
+    {{"Houses" | uppercase}}
+  </div>
+
+  <div class="row" *ngIf="allHouses?.length > 0">
+      <div class="col-md-3" *ngFor="let house of allHouses">
+        <br>
+          <div class="card section3">
+            <div class="card-header text-center"><b>{{house.name}}</b></div>
+            <div class="card-body text-center">
+              <p class="card-text" *ngIf="house?.region!=''">From : {{house.region}}</p>
+              <p class="card-text" *ngIf="house?.coatOfArms!=''">{{house.coatOfArms}}</p>
+              <p> Click on the button to view more</p>
+              <div class="card-footer text-center">
+              <a [routerLink]="['/houseView',house.url]" class="btn btn-primary">More info</a>
+              </div>
+            </div>
+          </div>
+          <br>
+      </div>
+    </div>
+  <
+
+</div>

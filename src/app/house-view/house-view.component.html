@@ -1,0 +1,45 @@
+<br><br>
+<div class="container">
+    <div class = "row" *ngIf = "currentHouse">
+      <div class="col-md-4"></div>
+      <div class = "col-md-4 text-center">
+        <div class="card">
+          <div class="card-header" *ngIf="currentHouse?.name!=''"><h4>{{currentHouse.name}}</h4></div>
+          <div class="card-body">
+            <p class="card-text" *ngIf="currentHouse?.region!=''" >Region : <b>{{currentHouse.region}}</b></p>
+            <p class="card-text" *ngIf="currentHouse?.ancestralWeapons!=''" >Weapons : {{currentHouse.ancestralWeapons}}</p>
+            <p class="card-text" *ngIf="currentHouse?.coatOfArms!=''" >Quote: <small>{{currentHouse.coatOfArms}}</small></p>
+            <p class="card-text" *ngIf="currentHouse?.words!=''" >Words : {{currentHouse.words}}</p>
+            <p class="card-text" *ngIf="currentHouse?.titles!=''" >TITLE : {{currentHouse.titles}}</p>
+            <p class="card-text" *ngIf="currentHouse?.seats!=''" >Seats  : {{currentHouse.seats}}</p>
+            <p class="card-text" *ngIf="currentHouse?.currentLord!=''" > Lord : 
+                <a [routerLink]="['/characterView',currentHouse.currentLord]" class="btn btn-primary"> {{currentHouse.currentLord.slice(-3)}} </a>
+            </p>
+            <p class="card-text" *ngIf="currentHouse?.heir!=''" >Heir :
+              <a [routerLink]="['/characterView',currentHouse.heir]" class="btn btn-primary"> {{currentHouse.heir.slice(-3)}}</a>
+            </p>
+            <p class="card-text" *ngIf="currentHouse?.cadetBranches!=''" >Cadet branches : {{currentHouse.cadetBranches}}</p>
+            <div class="card-text" *ngIf="currentHouse?.swornMembers!='' && currentHouse.swornMembers.length>0" >Sworn Members
+              <p class="card-text" *ngFor = "let member of currentHouse.swornMembers">
+                <a [routerLink]="['/characterView,member']" class="btn btn-primary">  {{member.slice(-3)}}</a>
+              </p>
+            </div>
+          </div>
+          <div class="card-footer">
+            <p class="card-text" *ngIf="currentHouse?.founder!=''" >Founder  : {{currentHouse.founder}}</p>
+            <p class="card-text" *ngIf="currentHouse?.founded!=''" >Founded on {{currentHouse.founded}}</p>
+            <p class="card-text" *ngIf="currentHouse?.diedOut!=''" >Died out at {{currentHouse.diedOut}}</p> 
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+          <a class="btn btn-warning" (click)="goBackToPreviousPage()" > Go Back </a>
+        </div>
+      </div>
+  </div>
+  

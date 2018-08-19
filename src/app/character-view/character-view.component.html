@@ -1,0 +1,87 @@
+<div class="container">
+  <br>
+  <div class="row" *ngIf="currentCharacter">
+    <div class="col-md-1">
+    </div>
+
+
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <p class="h4 text-center">Gist</p>
+        </div>
+        <div class="card-body">
+          <p class="card-text" *ngIf="currentCharacter?.name !=''">Name :
+            <b>{{currentCharacter.name}}</b>
+          </p>
+          <p class="card-text" *ngIf="currentCharacter?.aliases != ''">Alias :
+            <b>{{currentCharacter.aliases}}</b>
+          </p>
+          <p class="card-text" *ngIf="currentCharacter?.gender !=''">Gender :
+            <b>{{currentCharacter.gender}} </b>
+          </p>
+          <p class="card-text" *ngIf="currentCharacter?.culture !=''">Culture :
+            <b>{{currentCharacter.culture}} </b>
+          </p>
+          <p class="card-text" *ngIf="currentCharacter?.father !=''">Father :
+            <b>{{currentCharacter.father}} </b>
+          </p>
+          <p class="card-text" *ngIf="currentCharacter?.mother !=''">Mother :
+            <b>{{currentCharacter.mother}} </b>
+          </p>
+          <p class="card-text" *ngIf="currentCharacter?.spouse !=''">Spouse :
+            <b>{{currentCharacter.spouse}} </b>
+          </p>
+          <p class="card-text" *ngIf="currentCharacter?.playedBy !=''">Playedby :
+            <b> {{currentCharacter.playedBy}} </b>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" *ngIf="currentCharacter.books?.length>0 && currentCharacter.books !=''">
+        <div class="card-header">
+          <p class="h4 text-center">Books</p>
+        </div>
+        <div class="card-body" *ngIf="currentCharacter.books?.length>0">
+          <ul>
+            <p class="text-center" *ngFor="let book of currentCharacter.books">
+
+              <li>
+                <a [routerLink]="['/bookView',book]" class="btn btn-primary"> {{book.slice(-7)}} </a>
+              </li>
+            </p>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card" *ngIf="currentCharacter.tvSeries?.length>0 && currentCharacter.tvSeries !=''">
+        <div class="card-header">
+          <p class="h4 text-center">TV Series</p>
+        </div>
+        <div class="card-body">
+
+          <ul>
+            <p class="text-center" *ngFor="let serie of currentCharacter.tvSeries">
+              <li>{{serie}}</li>
+            </p>
+          </ul>
+        </div>
+        <br>
+      </div>
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+<br>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-4">
+        <a class="btn btn-warning" (click)="goBackToPreviousPage()" > Go Back </a>
+      </div>
+    </div>
+
+  <!--End of Main Row-->
+</div>
+<!--End of container-->

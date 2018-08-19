@@ -1,0 +1,11 @@
+.card-body{
+    background-color: chocolate;
+}
+.card-header{
+    color:white;
+    background-color: black;
+}
+.card-footer{
+    color:white;
+    background-color: black;
+}

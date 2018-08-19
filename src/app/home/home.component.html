@@ -1,0 +1,27 @@
+<div class="container ">
+  <div class="row">
+    <div class="col-md-12 text-center jumbotron h3">{{"Characters" | uppercase}}
+    </div>
+  </div>
+  <div class="row" *ngIf="allCharacters?.length > 0">
+    <div class="col-md-3" *ngFor="let character of allCharacters">
+      <br>
+      <div class="card">
+        <div class="card-header text-center">
+          <b>{{character.aliases}}</b>
+        </div>
+        <div class="card-body text-center">
+          <p class="card-text" *ngIf="character?.name !=''">Name : {{character.aliases}} </p>
+          <p class="card-text" *ngIf="character?.gender !=''">Gender : {{character.gender}}</p>
+          <p class="card-text" *ngIf="character?.culture !=''">Culture : {{character.culture}}</p>
+          <p class="card-text" *ngIf="character?.born !=''">Born : {{character.born}}</p>
+          
+          <div class="card-footer text-center">
+            <a [routerLink]="['/characterView',character.url]" class="btn btn-primary">More info</a>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
